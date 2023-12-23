@@ -1,0 +1,54 @@
+@model mvc.Models.Contato
+
+@{
+    ViewData["Title"] = "Detalhes do contato";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalhes do contato</h4>
+    </div>
+    <div class="card-body">
+        <div class="col-12">
+            @Html.DisplayNameFor(x => x.Ativo)
+            @if (Model.Ativo)
+            {
+                <i class="fa-solid fa-check"></i>
+            }
+            else
+            {
+                <i class="fa-solid fa-x"></i>
+            }
+        </div>
+        <div class="col-12">
+            @Html.DisplayNameFor(x => x.Nome)
+            @Html.DisplayFor(x => x.Nome)
+        </div>
+        <div class="col-12">
+            @Html.DisplayNameFor(x => x.Telefones)
+        </div>
+        <div class="col-12 pb-5">
+            @* @Html.DisplayFor(x => ) *@
+            <table class="table table-striped-columns">
+                <tbody>
+                    @foreach (var tel in Model.Telefones)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => tel.Numero)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card-footer text-body-secondary">
+        <div class="form-group text-center">
+            <a class="btn btn-success" asp-action="Index">Editar</a>
+            <a class="btn btn-secondary" asp-action="Index">Voltar</a>
+        </div>
+    </div>
+</div>
+

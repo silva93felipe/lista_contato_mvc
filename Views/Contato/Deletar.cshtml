@@ -1,0 +1,54 @@
+@model mvc.Models.Contato
+
+@{
+    ViewData["Title"] = "Inativar";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Deseja realmente inativar o contato abaixo?</h4>
+    </div>
+    <div class="card-body">
+        <div class="col-4">
+            @Html.DisplayNameFor(x => x.Nome)
+        </div>
+        <div class="col-4">
+            @Html.DisplayFor(x => x.Nome)
+        </div>
+        <div class="col-10 my-4">
+            @Html.DisplayNameFor(x => x.Telefones)
+        </div>
+        <div class="col-10 pb-4">
+            <table class="table table-striped-columns">
+                <tbody>
+                    @foreach (var tel in Model.Telefones)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => tel.Numero)
+                            </td>
+                            <td>
+                                <a asp-action="TelefoneDeletar" class="btn btn-danger" asp-route-id="@tel.Id">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+        <form asp-action="Deletar" class="text-center">
+            @if (Model.Ativo)
+            {
+                <button class="btn btn-danger" asp-route-acao="false" asp-action="Deletar">Inativar</button>
+            }else{
+                <button class="btn btn-success" asp-route-acao="true" asp-action="Deletar">Ativar</button>
+            }
+            <a class="btn btn-secondary" asp-action="Index">Voltar</a>
+        </form>
+    </div>
+</div>
+
+
