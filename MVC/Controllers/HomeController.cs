@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-namespace contato_mvc.Representation.Controllers
+namespace contato_mvc.MVC.Controllers
 {
     public class HomeController : Controller
     {

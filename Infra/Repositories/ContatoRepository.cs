@@ -19,6 +19,16 @@ namespace contato_mvc.Infra.Repository{
             await _agendaContext.AddAsync(contato);
         }
 
+        public IEnumerable<Contato> GetAll()
+        {
+            return _agendaContext.Contatos.ToList();
+        }
+
+        public Contato GetById(int contatoId)
+        {
+            return _agendaContext.Contatos.Find(contatoId);
+        }
+
         public async Task Remove(int contatoId)
         {
             var contato = await _agendaContext.Contatos.Where(c => c.Id == contatoId).FirstOrDefaultAsync();
