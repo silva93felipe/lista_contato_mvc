@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using mvc.Context;
-using mvc.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace mvc.Controllers
+namespace contato_mvc.Representation.Controllers
 {
     public class ContatoController : Controller
     {
-        private readonly AgendaContext _context;
+        /* private readonly AgendaContext _context;
         public ContatoController(AgendaContext context)
         {
             _context = context;
@@ -69,7 +66,7 @@ namespace mvc.Controllers
                         tel.UpdateAt = DateTime.UtcNow;
                     }
                 }
-            }
+            } 
 
             _context.Contatos.Update(contatoDb);
             _context.SaveChanges();
@@ -103,7 +100,7 @@ namespace mvc.Controllers
             if(contatoDb == null)
                 return RedirectToAction(nameof(Index));
 
-            contatoDb.Ativo = acao;
+          contatoDb.Ativo = acao;
             contatoDb.UpdateAt = DateTime.UtcNow;
 
             if(acao && contatoDb.Telefones != null){
@@ -118,7 +115,7 @@ namespace mvc.Controllers
                     tel.Ativo = false;
                     tel.UpdateAt = DateTime.UtcNow;
                 }
-            }
+            } 
             _context.SaveChanges();
             
             return RedirectToAction(nameof(Index));
@@ -134,6 +131,6 @@ namespace mvc.Controllers
             _context.SaveChanges();
             
             return RedirectToAction(nameof(Index));
-        }
+        }*/
     }
 }

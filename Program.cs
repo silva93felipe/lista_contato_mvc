@@ -1,4 +1,6 @@
-using mvc.Context;
+using contato_mvc.Domain.Interfaces.Repositories;
+using contato_mvc.Infra.Context;
+using contato_mvc.Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,9 @@ builder.Services.AddDbContext<AgendaContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IUnitOfWorkRepository, UnitOfWorkRepository>();
+builder.Services.AddTransient<IContatoRepository, ContatoRepository>();
+
 
 var app = builder.Build();
 
